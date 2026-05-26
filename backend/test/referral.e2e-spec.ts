@@ -5,7 +5,10 @@ import { AppModule } from '../src/app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { getTestDatabaseConfig, clearRepositories } from './test-helpers';
 import { User } from '../src/modules/users/entities/user.entity';
-import { Referral } from '../src/modules/referral/entities/referral.entity';
+import {
+  Referral,
+  ReferralStatus,
+} from '../src/modules/referral/entities/referral.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -184,7 +187,7 @@ describe('Referral (e2e)', () => {
         await referralRepository.save({
           referrerId: referrer.id,
           referredId: referredUser.id,
-          status: 'pending',
+          status: ReferralStatus.PENDING,
         });
 
         // Check initial stats

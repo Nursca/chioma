@@ -13,7 +13,7 @@ import { RATE_LIMIT_CONFIG } from '../config/rate-limit.config';
 export class RateLimitService {
   private readonly logger = new Logger(RateLimitService.name);
 
-  constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) { }
+  constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
   async consumePoints(
     identifier: string,
@@ -90,7 +90,9 @@ export class RateLimitService {
       await this.cacheManager.del(key);
       await this.cacheManager.del(blockKey);
     } catch (error) {
-      this.logger.error(`Failed to reset limit for ${identifier}: ${error.message}`);
+      this.logger.error(
+        `Failed to reset limit for ${identifier}: ${error.message}`,
+      );
       // Fail silently to avoid breaking the application
     }
   }
@@ -124,7 +126,9 @@ export class RateLimitService {
       await this.cacheManager.set(key, true, durationSeconds * 1000);
       this.logger.log(`Whitelisted identifier: ${identifier}`);
     } catch (error) {
-      this.logger.error(`Failed to whitelist identifier ${identifier}: ${error.message}`);
+      this.logger.error(
+        `Failed to whitelist identifier ${identifier}: ${error.message}`,
+      );
       // Fail silently to avoid breaking the application
     }
   }
@@ -142,7 +146,10 @@ export class RateLimitService {
     // Handle unknown tiers and categories gracefully
     if (!RATE_LIMIT_CONFIG[tier]) {
       this.logger.warn(`Unknown tier: ${tier}, falling back to FREE`);
-      return RATE_LIMIT_CONFIG[UserTier.FREE][category] || RATE_LIMIT_CONFIG[UserTier.FREE][EndpointCategory.PUBLIC];
+      return (
+        RATE_LIMIT_CONFIG[UserTier.FREE][category] ||
+        RATE_LIMIT_CONFIG[UserTier.FREE][EndpointCategory.PUBLIC]
+      );
     }
     if (!RATE_LIMIT_CONFIG[tier][category]) {
       this.logger.warn(`Unknown category: ${category}, falling back to PUBLIC`);

@@ -46,8 +46,9 @@ export class PropertyRegistryService {
     this.sorobanRpc = new StellarSdk.SorobanRpc.Server(rpcUrl);
     this.networkPassphrase = config.networkPassphrase;
 
-    const contractId =
-      this.configService.get<string>('PROPERTY_REGISTRY_CONTRACT_ID');
+    const contractId = this.configService.get<string>(
+      'PROPERTY_REGISTRY_CONTRACT_ID',
+    );
     if (contractId && contractId !== 'DEFAULT_CONTRACT_ID') {
       this.contract = new StellarSdk.Contract(contractId);
       this.logger.log(`PropertyRegistry contract initialized: ${contractId}`);

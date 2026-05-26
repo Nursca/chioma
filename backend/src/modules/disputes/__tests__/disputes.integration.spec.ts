@@ -425,7 +425,11 @@ describe.skip('DisputesService - Integration Tests', () => {
         testDispute.disputeId,
         mockFile,
         tenantUser.id,
-        { fileName: 'evidence.pdf', fileType: 'application/pdf', description: 'Photo evidence of damage' },
+        {
+          fileName: 'evidence.pdf',
+          fileType: 'application/pdf',
+          description: 'Photo evidence of damage',
+        },
       );
 
       expect(evidence).toBeDefined();

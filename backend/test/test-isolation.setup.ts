@@ -3,8 +3,6 @@
  * Ensures proper cleanup and isolation between tests
  */
 
-import { jest } from '@jest/globals';
-
 // ─── Global Test Hooks ───────────────────────────────────────────────────────
 
 beforeEach(() => {

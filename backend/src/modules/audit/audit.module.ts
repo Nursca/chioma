@@ -29,4 +29,4 @@ import { AuditRetentionService } from './audit-retention.service';
     AuditRetentionService,
   ],
 })
-export class AuditModule { }
+export class AuditModule {}

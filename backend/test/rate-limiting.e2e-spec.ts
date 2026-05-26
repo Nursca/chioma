@@ -30,7 +30,7 @@ describe('Rate Limiting E2E', () => {
 
   beforeEach(async () => {
     if (rateLimitService) {
-      await rateLimitService.reset?.().catch(() => {
+      await (rateLimitService as any).reset?.().catch(() => {
         // Ignore if reset is not available
       });
     }
@@ -38,7 +38,7 @@ describe('Rate Limiting E2E', () => {
 
   afterEach(async () => {
     if (rateLimitService) {
-      await rateLimitService.reset?.().catch(() => {
+      await (rateLimitService as any).reset?.().catch(() => {
         // Ignore if reset is not available
       });
     }

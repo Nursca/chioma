@@ -54,4 +54,4 @@ import { AuditModule } from '../audit/audit.module';
     PermissionsGuard,
   ],
 })
-export class SecurityModule { }
+export class SecurityModule {}

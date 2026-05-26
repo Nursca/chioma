@@ -10,10 +10,7 @@ describe('CSRF Protection Validation Tests', () => {
     const randomBytes = crypto.randomBytes(32).toString('hex');
     const timestamp = Date.now().toString();
     const data = `${randomBytes}:${timestamp}`;
-    const hmac = crypto
-      .createHmac('sha256', secret)
-      .update(data)
-      .digest('hex');
+    const hmac = crypto.createHmac('sha256', secret).update(data).digest('hex');
     return `${data}:${hmac}`;
   };
 

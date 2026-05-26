@@ -41,4 +41,4 @@ import { AuditModule } from '../audit/audit.module';
   providers: [PaymentService, PaymentGatewayService, AdminRefundsService],
   exports: [PaymentService, PaymentGatewayService],
 })
-export class PaymentModule { }
+export class PaymentModule {}
